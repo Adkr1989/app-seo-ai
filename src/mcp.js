@@ -14,7 +14,9 @@ const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0'; // Listen on all network interfaces
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000']
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
